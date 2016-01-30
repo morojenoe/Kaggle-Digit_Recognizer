@@ -2,12 +2,6 @@ import numpy as np
 
 
 def reduce_df_to_01(data):
-    """
-
-    :param data:
-    :return:
-    """
-
     labels = data.get("label")
     data = data.drop("label", axis=1)
     data = data.applymap((lambda x: 0 if x < 128 else 1))
@@ -16,12 +10,6 @@ def reduce_df_to_01(data):
 
 
 def get_patterns(data):
-    """
-
-    :param data:
-    :return:
-    """
-
     grouped = data.groupby(by=("label", ))
     return grouped.aggregate(np.prod)
 
